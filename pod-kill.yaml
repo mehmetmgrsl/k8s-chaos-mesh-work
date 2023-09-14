@@ -1,0 +1,17 @@
+kind: Schedule
+apiVersion: chaos-mesh.org/v1alpha1
+metadata:
+  namespace: dev
+  name: kill-random-pods
+spec:
+  schedule: '*/1 * * * *'
+  type: PodChaos
+  podChaos:
+    selector:
+      namespaces:
+        - dev
+      labelSelectors:
+        app: app-1
+    mode: fixed
+    value: "2"
+    action: pod-kill

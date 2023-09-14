@@ -39,6 +39,12 @@ chaos-dns-server-55bd597564-bqv9v           1/1     Running   0          24m
 
 
 #### 1. Simulate Pod Faults
+- Pod Kill
+
+  - ```kubectl apply -f ./pod-kill.yaml```
+
+  - 2 Pods will be deleted every minute randomly.
+
 
 
 ### Uninstall chaos-mesh
