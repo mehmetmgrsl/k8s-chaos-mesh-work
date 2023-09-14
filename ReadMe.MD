@@ -30,6 +30,8 @@ chaos-dashboard-68f7cb885f-rtczf            1/1     Running   0          24m
 chaos-dns-server-55bd597564-bqv9v           1/1     Running   0          24m
 ```
 
+### Uninstall chaos-mesh
+```kubectl delete ns chaos-mesh```
 
 ### Resources
 1*. https://chaos-mesh.org/
