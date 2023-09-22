@@ -11,6 +11,12 @@ A Powerful Chaos Engineering Platform for Kubernetes (1*)
 ### Precondition
 
 - Kubernetes Cluster
+  - minikube (installation)
+     - ```curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64```
+     - ```sudo install minikube-linux-amd64 /usr/local/bin/minikube```
+  - ```minikube start --memory 4096 --cpus 4 --kubernetes-version v1.25.14```
+ 
+- Support Status of Chaos Mesh -> https://chaos-mesh.org/supported-releases/
 
 ### Installation (2*)
 
@@ -36,7 +42,7 @@ chaos-dns-server-55bd597564-bqv9v           1/1     Running   0          24m
 - ```kubectl create ns dev```
 - ```kubectl apply -f example-01-deployment.yaml```
 
-
+-  ```curl -sSL https://mirrors.chaos-mesh.org/latest/web-show/deploy.sh | bash```
 
 #### 1. Simulate Pod Faults
 - Pod Kill
@@ -46,6 +52,18 @@ chaos-dns-server-55bd597564-bqv9v           1/1     Running   0          24m
   - 2 Pods will be deleted every minute randomly.
 
 
+#### 2. Simulate Network Delay
+  
+  - ```kubectl port-forward  svc/web-show 8081:8081```
+
+  - ```kubectl apply -f network-delay.yaml```
+
+  - ```kubectl delete -f network-delay.yaml```
+
+
+To access the Web Show application visit ```${NodeIP}:8081``` via your browser.
+
+  ![Network Delay](nw-delay.png)
 
 ### Uninstall chaos-mesh
 ```kubectl delete ns chaos-mesh```
@@ -54,3 +72,5 @@ chaos-dns-server-55bd597564-bqv9v           1/1     Running   0          24m
 1*. https://chaos-mesh.org/
 
 2*. https://chaos-mesh.org/docs/quick-start/
+
+3* https://chaos-mesh.org/blog/deploy-chaos-mesh-on-kubesphere/
