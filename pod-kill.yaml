@@ -9,7 +9,7 @@ spec:
   podChaos:
     selector:
       namespaces:
-        - dev
+        - default
       labelSelectors:
         app: app-1
     mode: fixed

@@ -39,7 +39,6 @@ chaos-dns-server-55bd597564-bqv9v           1/1     Running   0          24m
 ### Test (Chaos Experiments)
 
 #### 0. Create example pods
-- ```kubectl create ns dev```
 - ```kubectl apply -f example-01-deployment.yaml```
 
 -  ```curl -sSL https://mirrors.chaos-mesh.org/latest/web-show/deploy.sh | bash```
@@ -60,6 +59,8 @@ chaos-dns-server-55bd597564-bqv9v           1/1     Running   0          24m
 
   - ```kubectl delete -f network-delay.yaml```
 
+ #### 3. Simulate Stress Scenarios  (4*)
+
 
 To access the Web Show application visit ```${NodeIP}:8081``` via your browser.
 
@@ -74,3 +75,5 @@ To access the Web Show application visit ```${NodeIP}:8081``` via your browser.
 2*. https://chaos-mesh.org/docs/quick-start/
 
 3* https://chaos-mesh.org/blog/deploy-chaos-mesh-on-kubesphere/
+
+4* https://chaos-mesh.org/docs/simulate-heavy-stress-on-kubernetes/
