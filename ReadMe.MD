@@ -59,12 +59,38 @@ chaos-dns-server-55bd597564-bqv9v           1/1     Running   0          24m
 
   - ```kubectl delete -f network-delay.yaml```
 
- #### 3. Simulate Stress Scenarios  (4*)
-
-
 To access the Web Show application visit ```${NodeIP}:8081``` via your browser.
 
   ![Network Delay](nw-delay.png)
+
+ #### 3. Simulate Stress Scenarios  (4*)
+
+  - ```minikube addons enable metrics-server``` 
+
+```
+kubectl top pods
+NAME                            CPU(cores)   MEMORY(bytes)   
+deploy-app-1-7f5f6d9dd-cs52l    1m           7Mi             
+deploy-app-1-7f5f6d9dd-ksmvh    1m           7Mi             
+deploy-app-1-7f5f6d9dd-nwp5g    1m           7Mi             
+deploy-app-1-7f5f6d9dd-wqc7m    1m           7Mi             
+web-show-868b74c6fc-dr6xv       2m           11Mi      
+```
+
+  - ```kubectl apply -f memory-stress.yaml``` 
+
+  - ```kubectl top pod```
+
+    - 
+       ``` 
+       kubectl top pods
+       NAME                           CPU(cores)   MEMORY(bytes)   
+       deploy-app-1-7f5f6d9dd-cs52l   1m           7Mi             
+       deploy-app-1-7f5f6d9dd-ksmvh   1m           7Mi              
+       deploy-app-1-7f5f6d9dd-nwp5g   3m           256Mi           
+       deploy-app-1-7f5f6d9dd-wqc7m   1m           7Mi             
+       web-show-868b74c6fc-dr6xv      1m           11Mi    
+       ```
 
 ### Uninstall chaos-mesh
 ```kubectl delete ns chaos-mesh```
