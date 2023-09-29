@@ -15,6 +15,7 @@ A Powerful Chaos Engineering Platform for Kubernetes (1*)
      - ```curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64```
      - ```sudo install minikube-linux-amd64 /usr/local/bin/minikube```
   - ```minikube start --memory 4096 --cpus 4 --kubernetes-version v1.25.14```
+  - ```minikube addons enable metrics-server``` 
  
 - Support Status of Chaos Mesh -> https://chaos-mesh.org/supported-releases/
 
@@ -65,7 +66,6 @@ To access the Web Show application visit ```${NodeIP}:8081``` via your browser.
 
  #### 3. Simulate Stress Scenarios  (4*)
 
-  - ```minikube addons enable metrics-server``` 
 
 ```
 kubectl top pods
